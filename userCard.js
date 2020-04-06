@@ -38,8 +38,8 @@ template.innerHTML = `
 
         <div class="info">
             <h3></h3>
-            <p>Email</p>
-            <p>Phone</p>
+            <p> <slot name="email"> </p>
+            <p> <slot name="phone"> </p>
             
             <button id="toggle-info">Hide Info</button>
         </div>
