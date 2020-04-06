@@ -7,7 +7,7 @@
 </head>
 <style>
     body {
-        background-color: #333;
+        background-color: #222;
         color: #eee;
     }
     h3 {
@@ -16,7 +16,7 @@
 </style>
 <body>
 
-    <h3>Hello World</h3>
+    <h3>Web Components</h3>
     
     <!-- basic custom coponent -->
     <!-- <user-card></user-card> -->
@@ -30,6 +30,16 @@
     <user-card name="Jane Doe" avatar="https://randomuser.me/api/portraits/women/11.jpg">
         <div slot="email">jane92doe@gmail.com</div>
         <div slot="phone">032/511-9944</div>
+    </user-card>
+
+    <user-card name="Traversy Media" avatar="https://randomuser.me/api/portraits/men/31.jpg">
+        <div slot="email">traversy@media.com</div>
+        <div slot="phone">012/221-9911</div>
+    </user-card>
+
+    <user-card name="Net Ninja" avatar="https://randomuser.me/api/portraits/women/81.jpg">
+        <div slot="email">netninja@gmail.com</div>
+        <div slot="phone">032/331-1244</div>
     </user-card>
 
     <script src="userCard.js"></script>

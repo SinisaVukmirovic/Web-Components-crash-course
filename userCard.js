@@ -9,17 +9,21 @@ template.innerHTML = `
 
         .user-card {
             font-family: 'Arial', sans-serif;
-            background: #222;
+            background: #333;
             width: 500px;
             display: grid;
             grid-template-columns: 1fr 2fr;
             grid-gap: 10px;
             margin-bottom: 15px;
-            border-bottom: darkorchid 5px solid;
+            border-top: darkorchid 5px solid;
         }
     
         .user-card img {
             width: 100%;
+        }
+
+        .user-card .info {
+            margin-left: 20px;
         }
     
         .user-card button {
@@ -33,14 +37,16 @@ template.innerHTML = `
     </style>
 
     <div class="user-card">
-
         <img />
 
-        <div class="info">
+        <div>
             <h3></h3>
-            <p> <slot name="email"> </p>
-            <p> <slot name="phone"> </p>
             
+            <div class="info">
+                <p> <slot name="email"> </p>
+                <p> <slot name="phone"> </p>
+            </div>
+                
             <button id="toggle-info">Hide Info</button>
         </div>
     </div>
@@ -77,6 +83,36 @@ class UserCard extends HTMLElement {
 
         //     <h3>${this.getAttribute(name)}</h3>
         // `;
+
+        // adding functionality, event handling
+        this.showInfo = true;
+    }
+
+    toggleInfo() {
+        this.showInfo = !this.showInfo;
+
+        const info = this.shadowRoot.querySelector('.info');
+        const toggleBtn = this.shadowRoot.querySelector('#toggle-info');
+
+        if (this.showInfo) {
+            info.style.visibility = 'visible';
+            toggleBtn.innerText = 'Hide Info';
+        }
+        else {
+            info.style.visibility = 'hidden';
+            toggleBtn.innerText = 'Show Info';
+        }
+    }
+
+    // adding functionality, event handling
+    connectedCallback() {
+        this.shadowRoot.querySelector('#toggle-info').
+        addEventListener('click', () => this.toggleInfo());
+    }
+
+    disconnectCallback() {
+        this.shadowRoot.querySelector('#toggle-info').
+        removeEventListener();
     }
 }
 
